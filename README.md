@@ -50,3 +50,4 @@ Meld can also be installed via MacPorts, Fink or Brew, where you may also have t
 The functionality of **compareWith** is easily accessible in RStudio using the _Addins_ menu or the _Command Palette_ (`Ctrl`/`Cmd`+`Shift`+`P`). See `help("compareWith-addins", package = "compareWith")` for details and references to the underlying generic comparison functions in the package.
 
 ![Merge conflicts with compareWith](man/figures/compareWith-RStudioAddins.gif)
+# CompareWith

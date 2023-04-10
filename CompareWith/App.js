@@ -3,60 +3,43 @@ import { StyleSheet, View, Text, TouchableOpacity, Platform } from 'react-native
 // import Video from 'react-native-video';
 // import { Platform } from 'react-native';
 import { Video } from 'expo-av';
+import ThumbnailSelector from './components/thumbnail_selector';
+import VideoPlayer from './components/video_player';
 
 
 
 export default function App() {
   const [serverData, setServerData] = useState('');
-  let videos = [];
-  // useEffect(() => {
-  //   fetch('http://localhost:3000/')
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       setServerData(data);
-  //     });
-  // }, []);
+  console.log('server data', serverData);
 
-  const [isPlaying, setIsPlaying] = useState(false);
+
   const videoUri = 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4';
 
-  const videoRef = React.useRef(null);
+  const thumbnails =
+    ["https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg",
+      "https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg"];
 
-  const handleVideoState = (state) => {
-    setIsPlaying(state.isPlaying);
-  };
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
 
   return (
     <View style={styles.container}>
-      <Video
-        source={{ uri: videoUri }}
-        style={styles.video}
-        resizeMode="contain"
-        useNativeControls
-        isLooping
-        onPlaybackStatusUpdate={handleVideoState}
-      />
-      <View style={styles.controls}>
-        <TouchableOpacity onPress={handlePlayPause}>
-          <Text>{isPlaying ? 'Pause' : 'Play'}</Text>
-        </TouchableOpacity>
-        <Text>My Video Title</Text>
-      </View>
+      <ThumbnailSelector thumbnails={thumbnails} />
+      <VideoPlayer videoUri={videoUri} />
     </View>
-
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   title: {
     fontSize: 20,

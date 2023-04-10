@@ -20,27 +20,6 @@ mongoose.connect(dbURI)
     })
     .catch((err) => console.log(err))
 
-// //register view engine
-// app.set('view engine', 'ejs');
-
-// app.get('/', (req, res) => {
-//     // console.log('result', res);
-//     return res;
-// })
-
-
-
-// // video routes
-
-// app.get('/upload_video', (req, res) => {
-//     const video = new Video({
-//         title: 'Jannat forehand',
-//         sources: ["http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"],
-//         description: 'Basics',
-//     })
-
-
-
 app.get('/', (req, res) => {
     Video.findById('643087c450b0184f50345fa5')
         .then((result) =>  {
@@ -49,4 +28,15 @@ app.get('/', (req, res) => {
         .catch(err => {
             console.log(err);
         })
+});
+
+app.get('/user_videos', (req, res) => {
+  Video.find()
+      .then((result) =>  {
+        console.log('results', result);
+        res.send(result);
+      })
+      .catch(err => {
+          console.log(err);
+      })
 });

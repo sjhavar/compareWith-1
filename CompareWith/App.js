@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Platform } from 'react-native';
-// import Video from 'react-native-video';
-// import { Platform } from 'react-native';
-import { Video } from 'expo-av';
+import { StyleSheet, View} from 'react-native';
 import ThumbnailSelector from './components/thumbnail_selector';
 import VideoPlayer from './components/video_player';
 
